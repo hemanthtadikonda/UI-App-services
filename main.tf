@@ -16,7 +16,7 @@ resource "aws_security_group" "main" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = var.default_vpc_cidr_block
+    cidr_blocks      = [var.default_vpc_cidr_block]
   }
   egress {
     from_port        = 0
@@ -48,7 +48,7 @@ resource "aws_lb_target_group" "main" {
 
 resource "aws_lb_target_group" "public" {
   count      = var.service == "frontend" ? 1 : 0
-  name        = "${var.env}-${var.service}-pub_lb_tg"
+  name        = "${var.env}-${var.service}-pub-lb-tg"
   port        = 80
   protocol    = "HTTP"
   target_type = "ip"
