@@ -34,7 +34,7 @@ resource "aws_lb_target_group" "main" {
   vpc_id   = var.vpc_id
   tags        = merge ( local.tags ,{ Name = "${local.name_prefix}-tg" } )
 
-  health_check = {
+  health_check {
     enabled = true
     healthy_threshold = 2
     interval = 10
