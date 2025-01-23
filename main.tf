@@ -118,9 +118,6 @@ resource "aws_launch_template" "main" {
   key_name               =  var.key_name
   instance_type          = var.instance_type
   vpc_security_group_ids = [ aws_security_group.main.id ]
-  iam_instance_profile {
-    name = "${local.name_prefix}-role-profile"
-  }
 
   tag_specifications {
     resource_type = "instance"
