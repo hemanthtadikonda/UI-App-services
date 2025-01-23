@@ -30,7 +30,7 @@ resource "aws_security_group" "main" {
 resource "aws_lb_target_group" "main" {
   name     = "${local.name_prefix}-tg"
   port     = var.app_port
-  protocol = "HTTP"
+  protocol = var.service == "frontend" ? "HTTP" ? "tcp"
   vpc_id   = var.vpc_id
   tags        = merge ( local.tags ,{ Name = "${local.name_prefix}-tg" } )
 
